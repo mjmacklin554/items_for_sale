@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<center><h1> Welcome to the Item List Page </h1></center>
+<br/><br/>
+
+
+
+{% for list in list_items %}
+
+<div class="card">
+  <div class="card-header">
+    <a href="{% url 'show-list' list.id %}"> {{ list.item_name }} </a>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Location:	{{ list.source }} </h5>
+    <p class="card-text">
+
+    <ul>
+
+	
+	<li>Category:	{{ list.category }}</li>
+	<li>Description:	{{ list.description }}</li>
+	
+	<li>Location Email:	{{ list.source.email }}</li>
+
+	<li>Item Value:	${{ list.value }}</li>
+	<li>Sell Price:	${{ list.sell }}</li>
+	<li>Comments:	{{ list.comments }}
+
+
+	</li>
+	</ul>
+	<br/>
+
+
+    	
+
+    </p>
+   
+  </div>
+</div>
+<br/><br/>
+
+	
+
+{% endfor %}
+
+
+
+
+{% endblock %}
