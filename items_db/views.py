@@ -3,6 +3,21 @@ from django.http import HttpResponseRedirect
 from .models import Item
 from .forms import ItemForm
 
+def search_item(request):
+	if request.method == "POST":
+		searched = request.POST['searched']
+		list_items = Item.objects.filter(item_name__contains=searched)
+
+		return render(request, 'search_item.html', {'searched': searched, 'list_items': list_items})
+
+	else:
+
+		return render(request, 'search_item.html', {})
+	
+
+
+
+	
 
 def home(request):
 
